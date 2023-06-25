@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-$bg_color = '#aaaaaa';
-$favicon = 'favicon.png';
-$imagen = 'imagen.jpg';
-$logo = 'logo.png';
+$bg_color = $GLOBALS['bgColor'];
+$favicon = $GLOBALS['favicon'];
+$imagen = $GLOBALS['imagen'];
+$logo = $GLOBALS['logo'];
 ?>
 
 <!DOCTYPE html>

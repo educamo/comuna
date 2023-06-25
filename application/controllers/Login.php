@@ -8,10 +8,21 @@ class Login extends CI_Controller
 	{
 		parent::__construct();
 		// Carga el modelo de login
-		$this->load->model('Login_model');
+		$this->load->model(array('Login_model', 'config_model'));
 
 		//Carga la librería de form_validation
 		$this->load->library('form_validation');
+
+		//cargar variables globales de configuracion
+		$logo = $this->config_model->get_logo();
+		$imagen = $this->config_model->get_img();
+		$bgColor = $this->config_model->get_bgColor();
+		$favicon = $this->config_model->get_favicon();
+
+		$GLOBALS['logo'] = $logo;
+		$GLOBALS['imagen'] = $imagen;
+		$GLOBALS['bgColor'] = $bgColor;
+		$GLOBALS['favicon'] = $favicon;
 	}
 
 	/**
