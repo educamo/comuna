@@ -63,7 +63,7 @@ $logo = 'logo.png';
                         <?= $this->session->flashdata('msg') ?>
                         <div class="card-footer text-center">
                             <div class="row">
-                                <div class="col-md-12"><a href="#" class="">¿Olvidaste tu contraseña?</a> </div><!-- Añade tu enlace aquí -->
+                                <!-- <div class="col-md-12"><a href="#" class="">¿Olvidaste tu contraseña?</a> </div>Añade tu enlace aquí -->
                                 <div class="col-md-12"><a href="<?= base_url('login/registroUsuario') ?>" class="">¿No tienes cuenta? Regístrate</a></div><!-- Añade tu enlace aquí -->
                             </div>
                         </div>
