@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login_model extends CI_Model {
+class Login_model extends CI_Model
+{
 
 	public function __construct()
 	{
@@ -20,10 +21,21 @@ class Login_model extends CI_Model {
 		if ($query->num_rows() > 0) // Si hay un resultado
 		{
 			return $query->row_array(); // Devuelve los datos del usuario
-		}
-		else // Si no hay resultados
+		} else // Si no hay resultados
 		{
 			return 0; // Devuelve 0
 		}
-    }
+	}
+
+	// Inserta los datos del usuario en la tabla user
+	function insertUser($data)
+	{
+		return $this->db->insert('users', $data);
+	}
+
+
+	public function __destruct()
+	{
+		$this->db->close();
+	}
 }
