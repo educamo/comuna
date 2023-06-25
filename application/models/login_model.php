@@ -14,8 +14,10 @@ class Login_model extends CI_Model
 	public function get_user($username, $password)
 	{
 		// Consulta la tabla de usuarios con el nombre de usuario y la contraseña
+		$activo = 1;
 		$this->db->where('username', $username);
 		$this->db->where('password', $password);
+		$this->db->where('activo', $activo);
 		$query = $this->db->get('users');
 
 		if ($query->num_rows() > 0) // Si hay un resultado

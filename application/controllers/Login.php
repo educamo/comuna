@@ -10,16 +10,28 @@ class Login extends CI_Controller
 		// Carga el modelo de login
 		$this->load->model('Login_model');
 
-		//Carga la libreria de form_validation
+		//Carga la librería de form_validation
 		$this->load->library('form_validation');
 	}
 
+	/**
+	 * index function
+	 * description: carga por defecto la view login
+	 * @return void
+	 * @date: [23/06/2023]
+	 */
 	public function index()
 	{
 		// Muestra la vista de login
 		$this->load->view('login');
 	}
 
+/**
+ * loginchk function
+ * description: chequea si el usuario existe para iniciar session
+ * @return void
+ * @date: [25/06/2023]
+ */
 	public function loginchk()
 	{
 		// Obtiene los valores del formulario
@@ -41,7 +53,8 @@ class Login extends CI_Controller
 			{
 				// Establece las variables de sesión
 				$sessiondata = array(
-					'username' => $username,
+					'username'  => $username,
+					'rol'	    => usr_result['rol'],
 					'loginuser' => TRUE
 				);
 				$this->session->set_userdata($sessiondata);
