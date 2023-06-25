@@ -22,16 +22,21 @@ class Login extends CI_Controller
 	 */
 	public function index()
 	{
-		// Muestra la vista de login
-		$this->load->view('login');
+		if ($this->session->has_userdata('username')) {
+			// La sesión tiene la variable 'username'
+			redirect('site'); // Redirige a la página de miembros
+		} else {
+			// La sesión no tiene la variable 'username'
+			$this->load->view('login'); // Muestra la vista de login
+		}
 	}
 
-/**
- * loginchk function
- * description: chequea si el usuario existe para iniciar session
- * @return void
- * @date: [25/06/2023]
- */
+	/**
+	 * loginchk function
+	 * description: chequea si el usuario existe para iniciar session
+	 * @return void
+	 * @date: [25/06/2023]
+	 */
 	public function loginchk()
 	{
 		// Obtiene los valores del formulario
@@ -108,6 +113,11 @@ class Login extends CI_Controller
 
 	public function registroUsuario()
 	{
-		$this->load->view('registroUser');
+		if ($this->session->has_userdata('username')) {
+			// La sesión tiene la variable 'username'
+			redirect('site'); // Redirige a la página de miembros
+		} else {
+			$this->load->view('registroUser'); // muestra la vista de registrar usuarios
+		}
 	}
 }
