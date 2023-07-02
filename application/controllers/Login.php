@@ -53,7 +53,6 @@ class Login extends CI_Controller
 		// Obtiene los valores del formulario
 		$username = $this->input->post('txt_username');
 		$password = $this->input->post('txt_password');
-		$encrypted_password = $this->encrypt->encode($password, 'md5');
 
 
 		// Establece las reglas de validación
