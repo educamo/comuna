@@ -64,7 +64,7 @@ class Login extends CI_Controller
 			$this->load->view('login');
 		} else {
 			// La validación pasa, verifica si el usuario y la contraseña son correctos
-			$usr_result = $this->Login_model->get_user($username, $encrypted_password);
+			$usr_result = $this->Login_model->get_user($username, $password);
 			if ($usr_result > 0) // El usuario existe y está activo
 			{
 				// Establece las variables de sesión
