@@ -11,7 +11,7 @@ class Login extends CI_Controller
 		$this->load->model(array('Login_model', 'config_model'));
 
 		//Carga la librería de form_validation
-		$this->load->library('form_validation');
+		$this->load->library(array('form_validation'));
 
 		//cargar variables globales de configuracion
 		$logo = $this->config_model->get_logo();
@@ -53,6 +53,7 @@ class Login extends CI_Controller
 		// Obtiene los valores del formulario
 		$username = $this->input->post('txt_username');
 		$password = $this->input->post('txt_password');
+		$encrypted_password = $this->encrypt->encode($password, 'md5');
 
 
 		// Establece las reglas de validación
@@ -64,7 +65,7 @@ class Login extends CI_Controller
 			$this->load->view('login');
 		} else {
 			// La validación pasa, verifica si el usuario y la contraseña son correctos
-			$usr_result = $this->Login_model->get_user($username, $password);
+			$usr_result = $this->Login_model->get_user($username, $encrypted_password);
 			if ($usr_result > 0) // El usuario existe y está activo
 			{
 				// Establece las variables de sesión
