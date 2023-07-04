@@ -26,6 +26,11 @@ class Site extends CI_Controller
   // Método para mostrar la página principal del módulo de administración
   public function index()
   {
+
+    if (!($this->session->has_userdata('username'))) {
+			// La sesión no tiene la variable 'username'
+			redirect('login'); // Muestra la vista de login
+		}
     // Cargamos la vista admin/index.php y le pasamos algunos datos
     $data['titulo'] = 'Módulo de administración';
     // $data['usuarios'] = $this->usuario_model->get_all(); // Suponiendo que tenemos un modelo llamado usuario_model
@@ -46,7 +51,7 @@ class Site extends CI_Controller
   public function logout()
   {
     // Eliminamos los datos del usuario de la sesión y lo redirigimos a la página de inicio de sesión
-    $this->session->unset_userdata('usuario');
-    redirect('admin/login');
+    $this->session->unset_userdata('username');
+    redirect('site');
   }
 }
